@@ -58,3 +58,51 @@ export interface PaginatedResponse<T> {
   page_size: number;
   results: T[];
 }
+
+export interface SessionFeedback {
+  id: number;
+  session: number;
+  session_display: {
+    id: number;
+    class_name: string;
+    scheduled_date: string;
+    status: string;
+    topic: string;
+  };
+  student: number;
+  student_display: UserMinimal;
+  submitter: number;
+  submitter_display: UserMinimal;
+  rating_clarity: number;
+  rating_engagement: number;
+  rating_pace: number;
+  note: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface EligibleSession {
+  id: number;
+  class_obj: number;
+  class_name: string;
+  scheduled_date: string;
+  status: string;
+  topic: string;
+  duration_minutes: number;
+  student_id: number;
+  student_display: string;
+}
+
+export interface InstructorSummary {
+  instructor_id: number;
+  sessions_in_window: number;
+  sessions_with_feedback: number;
+  feedback_count: number;
+  weighted_averages: {
+    clarity: number | null;
+    engagement: number | null;
+    pace: number | null;
+    overall: number | null;
+  };
+  window_description: string;
+}
